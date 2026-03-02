@@ -1,0 +1,69 @@
+[
+      {
+        "id": 1,
+        "author": "Jaun Elia",
+        "category": "Love",
+        "shyari": "Teri aankhon ka jo rang hai, wo chehre pe chhupa hoon main."
+      },
+      {
+        "id": 2,
+        "author": "Mirza Ghalib",
+        "category": "Romantic",
+        "shyari": "Kabhi jo baat dil mein aaye, toh keh dena."
+      },
+      {
+        "id": 3,
+        "author": "Ali zaryoun",
+        "category": "Sad",
+        "shyari": "Dard ka ek pal bhi na chhupa paaye hum, har shayari mein, dard ki kahani hoti hai."
+      },
+      {
+        "id": 4,
+        "author": "Gulzar",
+        "category": "Love",
+        "shyari": "Tujh se zyada toh ye shaam dil mein basa hai, aur har ek shaam mein bas tera hi chehra dikhai deta hai."
+      },
+      {
+        "id": 5,
+        "author": "Rahat Indori",
+        "category": "Hurt",
+        "shyari": "Teri aankhon ka jo rang hai, wo chehre pe chhupa hoon main."
+      },
+      {
+        "id": 6,
+        "author": "Munawwar Rana",
+        "category": "Romantic",
+        "shyari": "Kabhi jo baat dil mein aaye, toh keh dena."
+      },
+      {
+        "id": 7,
+        "author": "Tehzeeb Bhaafi",
+        "category": "Sad",
+        "shyari": "Dard ka ek pal bhi na chhupa paaye hum, har shayari mein, dard ki kahani hoti hai."
+      },
+      {
+        "id": 8,
+        "author": "Amandeep Khayal",
+        "category": "Love",
+        "shyari": "Tujh se zyada toh ye shaam dil mein basa hai, aur har ek shaam mein bas tera hi chehra dikhai deta hai."
+      },
+      {
+        "id": 9,
+        "author": "Kanha Kamboj",
+        "category": "Attraction",
+        "shyari": "Tujh se zyada toh ye shaam dil mein basa hai, aur har ek shaam mein bas tera hi chehra dikhai deta hai."
+      },
+      {
+        "id": 10,
+        "author": "Adith Raj Shetty",
+        "category": "Love Hurts",
+        "shyari": "अगर तू सलिखे से तोडता मुझे,तो मेरे टुकड़े भी तेरे काम आते!"
+      },
+       {
+        "id": 11,
+        "author": "Pankaj Birla",
+        "category": "Love Memories",
+        "shyari": "एक बार गले लगा लेने से, तेरा यार जिंदा रहेगा इस बहाने से"
+      }
+    ]
+    

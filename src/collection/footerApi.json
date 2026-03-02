@@ -1,0 +1,20 @@
+[
+    {
+      "icon": "FaLocationDot",
+      "title": "Find Us",
+      "details": "Indore, Madhya Pradesh" 
+    },
+
+    {
+    "icon": "FaSquareInstagram",
+    "title": "Text Us",
+    "details": "kalam_ae_jazbaaat"
+    },
+
+    {
+        "icon": "BiLogoGmail",
+        "title": "Mail Us",
+        "details": "kalamaejazbaaat@gmail.com"
+    }
+    
+]
