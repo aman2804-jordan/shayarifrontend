@@ -9,7 +9,7 @@ import { Shayars } from "./pages/Shayars";
 import { Share } from "./pages/Share";
 import { ErrorPage } from "./pages/ErrorPage";
 import {Admin} from "./pages/Admin";
-import  AdminPage  from "./pages/AdminPage";  // ⬅️ import AdminPage
+import  {AdminPage}  from "./pages/AdminPage";  // ⬅️ import AdminPage
 
 const router = createBrowserRouter([
   {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         element: <Admin />,
       },
       {
-        path: "AdminPage",   // ✅ add AdminPage route
+        path: "adminpage",   // ✅ add AdminPage route
         element: <AdminPage />,
       },
     ],
