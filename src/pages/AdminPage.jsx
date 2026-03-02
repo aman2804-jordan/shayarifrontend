@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import.meta.env.VITE_API_URL
+
 
 function AdminPage() {
   const [shayaris, setShayaris] = useState([]);
@@ -16,11 +18,11 @@ function AdminPage() {
 
   // ✅ Fetch all pending shayaris
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/pending-shayari")
-      .then((res) => setShayaris(res.data))
-      .catch((err) => console.error(err));
-  }, []);
+  fetch(`${API_URL}/api/pending-shayari`)
+    .then(res => res.json())
+    .then(data => setShayaris(data))
+    .catch(err => console.error("Fetch error:", err));
+}, []);
 
   const approveShayari = async (id) => {
     await axios.put(`http://localhost:5000/api/shayari/approve/${id}`);
