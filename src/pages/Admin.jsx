@@ -40,8 +40,7 @@ export const Admin = () => {
 
       // Save token and redirect
       localStorage.setItem("token", result.token);
-window.dispatchEvent(new Event("storage")); // 🔥 forces navbar update
-navigate("/adminpage"); // ✅ navigate after login
+      navigate("/adminpage"); // ✅ navigate after login
 
     } catch (err) {
       console.error("🔥 Login error caught:", err);
