@@ -27,7 +27,7 @@ export const Admin = () => {
           password: data.password,
         }),
       });
-
+       //
       // Handle invalid response
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
