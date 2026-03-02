@@ -17,9 +17,9 @@ export const Admin = () => {
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
-
+    const API_URL = import.meta.env.VITE_API_URL; // ✅ use environment variable
     try {
-      const res = await fetch("http://localhost:5000/api/login", {
+      const res = await fetch(`${API_URL}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -47,7 +47,7 @@ export const Admin = () => {
       alert("Something went wrong: " + err.message);
     }
   };
-
+  const API_URL = import.meta.env.VITE_API_URL;
   return (
     <section className="section-share">
       <h2 className="container-title">Partner Hub</h2>
