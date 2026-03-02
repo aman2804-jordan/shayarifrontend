@@ -5,7 +5,7 @@ export const Shayars = () => {
 
   const fetchShayari = async () => {
     try {
-      const response = await fetch('http://localhost:5000/getAllShayari');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/getAllShayari`);
       if (!response.ok) throw new Error('Failed to fetch shayari');
       const data = await response.json();
       const filtered = data.filter(item => item.status !== "PENDING");
