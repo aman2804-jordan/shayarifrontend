@@ -198,13 +198,11 @@ nav ul li a {
 }
 
 .heading-xl {
-  font-family: inherit;
-  font-size: clamp(5.2rem, 6vw, 4.241rem);
+  font-size: clamp(2.8rem, 5vw, 4rem);
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -1px;
+  line-height: 1.2;
+  text-align: center;
 }
-
 .heading-x2 {
   font-family: inherit;
   font-size: clamp(3.6rem, 4.241rem, 3.2rem);
@@ -276,20 +274,22 @@ nav ul li a {
 }
 
 .card {
-  max-width: 55rem;
-  border: 0;
   width: 100%;
+  max-width: 55rem;
   margin-inline: auto;
+  display: flex;
 }
 
 .container-card {
   position: relative;
-  height: 150px;
   border: 2px solid transparent;
   background: linear-gradient(71deg, #080509, #1a171c, #080509);
   background-clip: padding-box;
   border-radius: 45px;
   padding: 40px;
+  width: 100%;
+  min-height: 200px;   /* optional */
+  height: auto;        /* ✅ allow content to grow */
 }
 
 .bg-green-box,
