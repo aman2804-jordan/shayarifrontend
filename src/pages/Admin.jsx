@@ -40,7 +40,7 @@ export const Admin = () => {
 
       // Save token and redirect
       localStorage.setItem("token", result.token);
-      navigate("/AdminPage"); // ✅ navigate after login
+      navigate("/adminpage"); // ✅ navigate after login
 
     } catch (err) {
       console.error("🔥 Login error caught:", err);

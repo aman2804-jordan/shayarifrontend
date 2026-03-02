@@ -10,7 +10,7 @@ export const AdminPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/Admin");
+      navigate("/admin");
     }
   }, [navigate]);
 
