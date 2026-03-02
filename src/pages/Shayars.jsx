@@ -22,7 +22,7 @@ export const Shayars = () => {
   return (
     <section className="section-about container">
       <h2 className="container-title">
-        Here are The Famous Shayari's By<br/>The Famous Shayar's . . .
+        Here are The Famous Shayari's By<br/>The Famous Shayar's...
       </h2>
       <div className="gradient-cards">
         {shayaris.map((shayari) => (
