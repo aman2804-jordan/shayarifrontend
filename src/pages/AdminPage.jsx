@@ -1,83 +1,101 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function AdminPage() {
+export const AdminPage = () => {
   const [shayaris, setShayaris] = useState([]);
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL;
 
-  // ✅ Check token on mount
+  // 🔒 Protect route
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/admin"); // redirect if not logged in
+      navigate("/Admin");
     }
-  }, [navigate]); // <-- dependency array is required
+  }, [navigate]);
 
-  // ✅ Fetch all pending shayaris
+  // 📥 Fetch Pending Shayari
+  const fetchPendingShayari = async () => {
+    try {
+      const res = await fetch(`${API_URL}/api/pending-shayari`);
+      if (!res.ok) throw new Error("Failed to fetch pending shayari");
+
+      const data = await res.json();
+      setShayaris(data);
+    } catch (err) {
+      console.error("Fetch error:", err);
+    }
+  };
+
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/pending-shayari")
-      .then((res) => setShayaris(res.data))
-      .catch((err) => console.error(err));
+    fetchPendingShayari();
   }, []);
 
-  const approveShayari = async (id) => {
-    await axios.put(`http://localhost:5000/api/shayari/approve/${id}`);
-    setShayaris(shayaris.filter((s) => s._id !== id));
+  // ✅ Approve
+  const handleApprove = async (id) => {
+    try {
+      const res = await fetch(
+        `${API_URL}/api/shayari/approve/${id}`,
+        { method: "PUT" }
+      );
+
+      if (!res.ok) throw new Error("Approve failed");
+
+      fetchPendingShayari(); // refresh list
+    } catch (err) {
+      console.error("Approve error:", err);
+    }
   };
 
-  const rejectShayari = async (id) => {
-    await axios.delete(`http://localhost:5000/api/shayari/reject/${id}`);
-    setShayaris(shayaris.filter((s) => s._id !== id));
-  };
+  // ❌ Reject
+  const handleReject = async (id) => {
+    try {
+      const res = await fetch(
+        `${API_URL}/api/shayari/reject/${id}`,
+        { method: "DELETE" }
+      );
 
-  const handleLogout = () => {
-    localStorage.removeItem("token"); // clear token
-    navigate("/admin"); // redirect to login page
+      if (!res.ok) throw new Error("Reject failed");
+
+      fetchPendingShayari(); // refresh list
+    } catch (err) {
+      console.error("Reject error:", err);
+    }
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h2>Admin Panel – Pending Shayaris</h2>
-        <button
-          onClick={handleLogout}
-          style={{
-            background: "black",
-            color: "white",
-            border: "golden",
-            padding: "6px 10px",
-            borderRadius: "4px",
-            cursor: "pointer",
-          }}
-        >
-         Logout
-        </button>
-      </div>
+    <section className="section-about container">
+      <h2 className="container-title">Pending Shayari</h2>
 
       {shayaris.length === 0 ? (
-        <p>No pending shayaris 🎉</p>
+        <p>No pending shayari found.</p>
       ) : (
-        shayaris.map((shayari) => (
-          <div
-            key={shayari._id}
-            style={{
-              border: "1px solid #ccc",
-              margin: "10px",
-              padding: "10px",
-              borderRadius: "8px",
-            }}
-          >
-            <h4>{shayari.username}</h4>
-            <p>{shayari.shayari}</p>
-            <button onClick={() => approveShayari(shayari._id)}>✅ Approve</button>
-            <button onClick={() => rejectShayari(shayari._id)}>❌ Reject</button>
+        shayaris.map((item) => (
+          <div key={item._id} className="card">
+            <div className="container-card bg-yellow-box">
+              <p>{item.shayari}</p>
+              <p>
+                <strong>By:</strong> {item.username}
+              </p>
+
+              <div style={{ marginTop: "10px" }}>
+                <button
+                  onClick={() => handleApprove(item._id)}
+                  style={{ marginRight: "10px" }}
+                >
+                  Approve
+                </button>
+
+                <button
+                  onClick={() => handleReject(item._id)}
+                >
+                  Reject
+                </button>
+              </div>
+            </div>
           </div>
         ))
       )}
-    </div>
+    </section>
   );
-}
-
-export default AdminPage;
+};
