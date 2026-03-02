@@ -1,17 +1,20 @@
 import axios from 'axios';
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const Share = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const formInputData = Object.fromEntries(formData.entries());
+    
+const API_URL = import.meta.env.VITE_API_URL; // ✅ use VITE_API_URL
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/shayari',
-        formInputData,
-        { headers: { 'Content-Type': 'application/json' } }
-      );
+  `${API_URL}/api/shayari`, // <- use environment variable
+  formInputData,
+  { headers: { 'Content-Type': 'application/json' } }
+);
       alert(res.data?.message || 'Shayari submitted successfully!');
       e.target.reset();
     } catch (err) {
