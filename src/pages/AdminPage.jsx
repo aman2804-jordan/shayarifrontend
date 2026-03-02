@@ -1,60 +1,77 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import.meta.env.VITE_API_URL
 
-
-function AdminPage() {
+export default function AdminPage() {
   const [shayaris, setShayaris] = useState([]);
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL; // ✅ FIXED
 
-  // ✅ Check token on mount
+  // 🔐 Protect route
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/admin"); // redirect if not logged in
+      navigate("/admin");
     }
-  }, [navigate]); // <-- dependency array is required
+  }, [navigate]);
 
-  // ✅ Fetch all pending shayaris
+  // 📥 Fetch pending shayaris
+  const fetchPendingShayaris = async () => {
+    try {
+      const res = await axios.get(`${API_URL}/api/pending-shayari`);
+      setShayaris(res.data);
+    } catch (err) {
+      console.error("Fetch error:", err);
+    }
+  };
+
   useEffect(() => {
-  fetch(`${API_URL}/api/pending-shayari`)
-    .then(res => res.json())
-    .then(data => setShayaris(data))
-    .catch(err => console.error("Fetch error:", err));
-}, []);
+    fetchPendingShayaris();
+  }, []);
 
+  // ✅ Approve
   const approveShayari = async (id) => {
-    await axios.put(`http://localhost:5000/api/shayari/approve/${id}`);
-    setShayaris(shayaris.filter((s) => s._id !== id));
+    try {
+      await axios.put(`${API_URL}/api/shayari/approve/${id}`);
+      fetchPendingShayaris(); // refresh list
+    } catch (err) {
+      console.error("Approve error:", err);
+    }
   };
 
+  // ❌ Reject
   const rejectShayari = async (id) => {
-    await axios.delete(`http://localhost:5000/api/shayari/reject/${id}`);
-    setShayaris(shayaris.filter((s) => s._id !== id));
+    try {
+      await axios.delete(`${API_URL}/api/shayari/reject/${id}`);
+      fetchPendingShayaris(); // refresh list
+    } catch (err) {
+      console.error("Reject error:", err);
+    }
   };
 
+  // 🚪 Logout
   const handleLogout = () => {
-    localStorage.removeItem("token"); // clear token
-    navigate("/admin"); // redirect to login page
+    localStorage.removeItem("token");
+    navigate("/admin");
   };
 
   return (
     <div style={{ padding: "20px" }}>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <h2>Admin Panel – Pending Shayaris</h2>
+
         <button
           onClick={handleLogout}
           style={{
             background: "black",
             color: "white",
-            border: "golden",
-            padding: "6px 10px",
+            border: "1px solid gold",
+            padding: "6px 12px",
             borderRadius: "4px",
             cursor: "pointer",
           }}
         >
-         Logout
+          Logout
         </button>
       </div>
 
@@ -66,20 +83,27 @@ function AdminPage() {
             key={shayari._id}
             style={{
               border: "1px solid #ccc",
-              margin: "10px",
+              margin: "10px 0",
               padding: "10px",
               borderRadius: "8px",
             }}
           >
             <h4>{shayari.username}</h4>
             <p>{shayari.shayari}</p>
-            <button onClick={() => approveShayari(shayari._id)}>✅ Approve</button>
-            <button onClick={() => rejectShayari(shayari._id)}>❌ Reject</button>
+
+            <button
+              onClick={() => approveShayari(shayari._id)}
+              style={{ marginRight: "10px" }}
+            >
+              ✅ Approve
+            </button>
+
+            <button onClick={() => rejectShayari(shayari._id)}>
+              ❌ Reject
+            </button>
           </div>
         ))
       )}
     </div>
   );
 }
-
-export default AdminPage;
