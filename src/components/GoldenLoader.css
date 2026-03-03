@@ -1,6 +1,6 @@
 .golden-loader-wrapper {
   width: 100%;
-  min-height: 60vh; /* makes it vertically centered */
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,14 +14,18 @@
   border: 6px solid rgba(255, 215, 0, 0.15);
   border-top: 6px solid #d4af37;
   border-right: 6px solid #ffd700;
+
+  /* ✅ FIXED animation name */
   animation: spin 1s linear infinite;
 }
 
-
-
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-text {
