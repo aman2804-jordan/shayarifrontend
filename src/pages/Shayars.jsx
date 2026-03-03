@@ -33,7 +33,7 @@ export const Shayars = () => {
       </h2>
       <div className="gradient-cards">
   {loading ? (
-    <p style={{ textAlign: "center" }}>Loading Shayari...</p>
+    <GoldenLoader />
   ) : shayaris.length === 0 ? (
     <p style={{ textAlign: "center" }}>No Shayari Found</p>
   ) : (
