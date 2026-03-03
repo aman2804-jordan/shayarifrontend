@@ -72,17 +72,20 @@ export const Share = () => {
           />
 
           <button
-            type="submit"
-            disabled={isPosting}
-            style={{
-              background: isPosting ? "gold" : "black",
-              color: isPosting ? "black" : "white",
-              cursor: isPosting ? "not-allowed" : "pointer",
-              transition: "0.3s ease",
-            }}
-          >
-            {isPosting ? "Posting..." : "Share"}
-          </button>
+  type="submit"
+  disabled={isPosting}
+  style={{
+    background: isPosting ? "gold" : "black",
+    color: isPosting ? "black" : "white",
+    cursor: isPosting ? "not-allowed" : "pointer",
+    transition: "0.3s ease",
+    display: "flex",              // ✅ important
+    justifyContent: "center",     // ✅ center horizontally
+    alignItems: "center",         // ✅ center vertically
+  }}
+>
+  {isPosting ? "Posting..." : "Share"}
+</button>
         </form>
       </div>
     </section>
