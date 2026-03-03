@@ -1,8 +1,13 @@
 .golden-loader-wrapper {
-  width: 100%;
-  min-height: 60vh; /* makes it vertically centered */
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cards-loader-wrapper {
+  width: 100%;
+  min-height: 300px; /* space where cards normally appear */
+  display: flex;
   align-items: center;
   justify-content: center;
 }

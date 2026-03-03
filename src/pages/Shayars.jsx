@@ -29,28 +29,26 @@ export const Shayars = () => {
 
   return (
     <section className="section-about container">
-      <h2 className="container-title">
+      <h2 className="common-heading">
         Here are The Famous Shayari's By<br/>The Famous Shayar's...
       </h2>
       <div className="gradient-cards">
-  {loading ? (
-    <GoldenLoader />
-  ) : shayaris.length === 0 ? (
-    <p style={{ textAlign: "center" }}>No Shayari Found</p>
-  ) : (
-    shayaris.map((shayari) => (
-      <div className="card" key={shayari._id}>
-        <div className="container-card bg-yellow-box">
-          <p>{shayari.shayari}</p>
-          <p>
-            <span className="card-description">By: </span>
-            {shayari.username}
-          </p>
-        </div>
+
+    {loading ? (
+      <div className="cards-loader-wrapper">
+        <GoldenLoader />
       </div>
-    ))
-  )}
-</div>
-    </section>
+    ) : (
+      shayaris.map((shayari) => (
+        <div className="card" key={shayari._id}>
+          <p>{shayari.content}</p>
+          <h4>- {shayari.author}</h4>
+        </div>
+      ))
+    )}
+
+  </div>
+
+</section>
   );
 };
