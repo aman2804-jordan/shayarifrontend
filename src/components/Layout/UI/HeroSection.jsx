@@ -19,7 +19,9 @@ export const HeroSection = () => {
                             <img src="/images/quirl.png"
                              alt="Kalam-Ae-Jazbaaat"
                              className="banner-image"
+                             loading="lazy"
                              />
+                             
                         </div>
                </div>
                </main>

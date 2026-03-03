@@ -34,6 +34,7 @@ export const About = () => {
           <img
             src="/images/kalam profile.jpg"
             alt="Kalam-Ae-Jazbaaat"
+            loading="lazy"
             className="banner-image"
           />
         </div>
