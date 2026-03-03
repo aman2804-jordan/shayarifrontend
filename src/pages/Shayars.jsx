@@ -22,6 +22,10 @@ export const Shayars = () => {
   useEffect(() => {
     fetchShayari();
   }, []);
+  
+  if (loading) {
+  return <GoldenLoader />;
+}
 
   return (
     <section className="section-about container">
