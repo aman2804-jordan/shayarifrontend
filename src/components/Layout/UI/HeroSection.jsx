@@ -16,7 +16,7 @@ export const HeroSection = () => {
                             <a href="/shayars"><button> Start Exploring <HiOutlineArrowLongRight /> </button> </a>
                </div>
                <div className="hero-image">
-                            <img src="/images/quirl.png"
+                            <img src="/images/quirllll.png"
                              alt="Kalam-Ae-Jazbaaat"
                              className="banner-image"
                              loading="lazy"
