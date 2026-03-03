@@ -1,33 +1,34 @@
 .golden-loader-wrapper {
-  width: 100%;
-  min-height: 60vh; /* makes it vertically centered */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 300px;
+  background-color: #000;
+  text-align: center;
 }
 
-/* Premium golden ring */
+/* Premium Golden Ring */
 .golden-loader {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: 6px solid rgba(255, 215, 0, 0.15);
-  border-top: 6px solid #d4af37;
-  border-right: 6px solid #ffd700;
+  border-top: 6px solid #d4af37; /* royal gold */
+  border-right: 6px solid #ffd700; /* bright gold */
   animation: spin 1s linear infinite;
 }
 
 /* White centered text */
 .loading-text {
-  margin-top: 18px;
-  font-size: 18px;
+  margin-top: 20px;
+  font-size: 16px;
   letter-spacing: 1.5px;
   color: #ffffff;
   font-weight: 500;
-  text-align: center;
 }
 
+/* Smooth rotation */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
