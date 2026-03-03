@@ -24,7 +24,9 @@ export const Shayars = () => {
     fetchShayari();
   }, []);
   
-  
+  if (loading) {
+  return <GoldenLoader />;
+}
 
   return (
     <section className="section-about container">
