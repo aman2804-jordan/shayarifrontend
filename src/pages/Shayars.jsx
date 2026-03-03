@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import GoldenLoader from "../components/GoldenLoader";
 
 export const Shayars = () => {
-  const [shayaris, setShayaris] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [shayaris, setShayaris] = useState([]);
+  
   const fetchShayari = async () => {
   try {
     const response = await fetch(`${import.meta.env.VITE_API_URL}/getAllShayari`);
@@ -32,7 +33,7 @@ export const Shayars = () => {
       </h2>
       <div className="gradient-cards">
   {loading ? (
-    <GoldenLoader />
+    <p style={{ textAlign: "center" }}>Loading Shayari...</p>
   ) : shayaris.length === 0 ? (
     <p style={{ textAlign: "center" }}>No Shayari Found</p>
   ) : (
