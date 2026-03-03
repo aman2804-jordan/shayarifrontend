@@ -23,9 +23,7 @@ export const Shayars = () => {
     fetchShayari();
   }, []);
   
-  if (loading) {
-  return <GoldenLoader />;
-}
+  
 
   return (
     <section className="section-about container">
@@ -33,22 +31,24 @@ export const Shayars = () => {
         Here are The Famous Shayari's By<br/>The Famous Shayar's...
       </h2>
       <div className="gradient-cards">
-
-    {loading ? (
-      <div className="cards-loader-wrapper">
-        <GoldenLoader />
-      </div>
-    ) : (
-      shayaris.map((shayari) => (
-        <div className="card" key={shayari._id}>
-          <p>{shayari.content}</p>
-          <h4>- {shayari.author}</h4>
+  {loading ? (
+    <GoldenLoader />
+  ) : shayaris.length === 0 ? (
+    <p style={{ textAlign: "center" }}>No Shayari Found</p>
+  ) : (
+    shayaris.map((shayari) => (
+      <div className="card" key={shayari._id}>
+        <div className="container-card bg-yellow-box">
+          <p>{shayari.shayari}</p>
+          <p>
+            <span className="card-description">By: </span>
+            {shayari.username}
+          </p>
         </div>
-      ))
-    )}
-
-  </div>
-
+      </div>
+    ))
+  )}
+</div>
 </section>
   );
 };

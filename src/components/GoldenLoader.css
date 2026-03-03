@@ -1,39 +1,48 @@
 .golden-loader-wrapper {
+  width: 100%;
+  min-height: 60vh; /* makes it vertically centered */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.cards-loader-wrapper {
-  width: 100%;
-  min-height: 300px; /* space where cards normally appear */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-/* Premium golden ring */
 .golden-loader {
-  width: 90px;
-  height: 90px;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 4px solid transparent;
+  border-top: 4px solid rgb(196, 173, 43);
   border-radius: 50%;
-  border: 6px solid rgba(255, 215, 0, 0.15);
-  border-top: 6px solid #d4af37;
-  border-right: 6px solid #ffd700;
-  animation: spin 1s linear infinite;
+  animation: rotate 1.2s linear infinite;
 }
 
-/* White centered text */
-.loading-text {
-  margin-top: 18px;
-  font-size: 18px;
-  letter-spacing: 1.5px;
-  color: #ffffff;
-  font-weight: 500;
-  text-align: center;
+.ring:nth-child(2) {
+  border-top: 4px solid #d1aa2a;
+  animation-delay: 0.2s;
 }
 
-@keyframes spin {
+.ring:nth-child(3) {
+  border-top: 4px solid #bda105;
+  animation-delay: 0.4s;
+}
+
+@keyframes rotate {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  margin-top: 20px;
+  color:wheat;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: 16px;
+  text-align: center;
 }
