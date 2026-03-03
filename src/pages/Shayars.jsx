@@ -28,9 +28,9 @@ export const Shayars = () => {
 
   return (
     <section className="section-about container">
-      <h1 className="heading-xl">
+      <h2 className="common-heading">
         Here are The Famous Shayari's By<br/>The Famous Shayar's...
-      </h1>
+      </h2>
       <div className="gradient-cards">
   {loading ? (
     <GoldenLoader />
