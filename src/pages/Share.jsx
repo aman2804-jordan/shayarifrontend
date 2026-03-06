@@ -64,12 +64,20 @@ export const Share = () => {
           />
 
           <textarea
-            name="shayari"
-            rows="10"
-            required
-            placeholder="Enter Your Shayari"
-            autoComplete="off"
-          />
+  name="shayari"
+  rows="3"
+  required
+  placeholder="Enter Your Shayari"
+  autoComplete="off"
+  style={{
+    resize: "none",
+    overflow: "hidden"
+  }}
+  onInput={(e) => {
+    e.target.style.height = "auto";
+    e.target.style.height = e.target.scrollHeight + "px";
+  }}
+/>
 
           <button
   type="submit"
