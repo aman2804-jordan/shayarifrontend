@@ -40,7 +40,7 @@ const VideoPreview = () => {
         <iframe
           src={previewSrc}
           title="Video preview"
-          className="w-full h-[380px]"
+          className="w-full h-[520px]"
           frameBorder="0"
           allow="autoplay"
         ></iframe>
