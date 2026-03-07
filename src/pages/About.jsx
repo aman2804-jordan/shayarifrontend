@@ -1,7 +1,9 @@
+import { useState } from "react";
+
 // Premium Video Preview Component
 const VideoPreview = () => {
 
-  const videoId = "AyCPvv00wlY";   // ← your shorts ID
+  const videoId = "AyCPvv00wlY";
 
   const [hovered, setHovered] = useState(false);
 
@@ -46,3 +48,5 @@ const VideoPreview = () => {
     </div>
   );
 };
+
+export default VideoPreview;
