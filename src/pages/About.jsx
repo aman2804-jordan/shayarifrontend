@@ -1,4 +1,55 @@
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
+import { useState } from "react";
+
+
+// Premium Video Preview Component
+const VideoPreview = () => {
+  const videoId = "YOUTUBE_VIDEO_ID"; // Replace with your video ID
+
+  const [hovered, setHovered] = useState(false);
+
+  const thumbnail = `https://img.youtube.com/vi/${AyCPvv00wlY}/maxresdefault.jpg`;
+
+  const previewSrc = `https://www.youtube.com/embed/${AyCPvv00wlY}?autoplay=1&mute=1&controls=0&loop=1&playlist=${AyCPvv00wlY}`;
+
+  const openYoutube = () => {
+    window.open(`https://www.youtube.com/watch?v=${AyCPvv00wlY}`, "_blank");
+  };
+
+  return (
+    <div
+      className="relative w-full max-w-xl cursor-pointer group overflow-hidden rounded-xl shadow-xl"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={openYoutube}
+    >
+      {!hovered ? (
+        <>
+          <img
+            src={thumbnail}
+            alt="Video Thumbnail"
+            className="w-full h-[380px] object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="bg-white/90 p-4 rounded-full shadow-lg group-hover:scale-110 transition">
+              ▶
+            </div>
+          </div>
+        </>
+      ) : (
+        <iframe
+          src={previewSrc}
+          title="Video preview"
+          className="w-full h-[380px]"
+          frameBorder="0"
+          allow="autoplay"
+        ></iframe>
+      )}
+    </div>
+  );
+};
+
 
 export const About = () => {
   return (
@@ -20,7 +71,7 @@ export const About = () => {
           </div>
 
           <a
-            href="https://www.instagram.com/kalam_ae_jazbaaat/"
+            href="https://www.youtube.com/@kalamaejazbaaat"
             target="_blank"
             rel="noreferrer"
           >
@@ -30,13 +81,9 @@ export const About = () => {
           </a>
         </div>
 
+        {/* Video Section */}
         <div className="hero-image">
-          <img
-            src="/images/kalam profile.jpg"
-            alt="Kalam-Ae-Jazbaaat"
-            loading="lazy"
-            className="banner-image"
-          />
+          <VideoPreview />
         </div>
 
       </div>
