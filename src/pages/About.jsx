@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// Premium Video Preview Component
+// Video Preview Component
 const VideoPreview = () => {
 
   const videoId = "AyCPvv00wlY";
@@ -49,4 +49,23 @@ const VideoPreview = () => {
   );
 };
 
-export default VideoPreview;
+
+// About Page
+export const About = () => {
+  return (
+    <main className="hero-section">
+      <div className="container grid grid-two-cols">
+
+        <div className="hero-content">
+          <h1 className="heading-xl">About Page</h1>
+          <p>Kalam ae Jazbaaat – where feelings turn into Shayari.</p>
+        </div>
+
+        <div className="hero-image">
+          <VideoPreview />
+        </div>
+
+      </div>
+    </main>
+  );
+};
